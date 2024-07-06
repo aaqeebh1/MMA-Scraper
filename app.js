@@ -20,12 +20,14 @@ async function getEvents() {
         const cardLocation = $$(".c-hero__text").find(".field").text();
         const fights = $$(".c-listing-fight__content-row");
 
-        fights.each(function() {
+        fights.each(function () {
+            const fighterNameHrefRedCorner = $(this).find(".c-listing-fight__corner-name--red").find("a").text();
             const fightRedCorner = $(this).find(".c-listing-fight__corner-name--red")
-            const fighterNameRedCorner = fightRedCorner.find(".c-listing-fight__corner-given-name").text() + " " + fightRedCorner.find(".c-listing-fight__corner-family-name").text();
+            const fighterNameRedCorner = fightRedCorner.find(".c-listing-fight__corner-given-name").text() + "" + fightRedCorner.find(".c-listing-fight__corner-family-name").text();
+            const fighterNameHrefBlueCorner = $(this).find(".c-listing-fight__corner-name--blue").find("a").text();
             const fightBlueCorner = $(this).find(".c-listing-fight__corner-name--blue")
             const fighterNameBlueCorner = fightBlueCorner.find(".c-listing-fight__corner-given-name").text() + " " + fightBlueCorner.find(".c-listing-fight__corner-family-name").text();
-            console.log(`${fighterNameRedCorner} vs ${fighterNameBlueCorner}`)
+            console.log(`${!fighterNameRedCorner ? fighterNameHrefRedCorner : fighterNameRedCorner} vs ${!fighterNameBlueCorner ? fighterNameHrefBlueCorner : fighterNameBlueCorner}`)
         });
         
 
